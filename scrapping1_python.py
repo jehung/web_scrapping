@@ -29,18 +29,23 @@ def lookup(driver):
     page_number = 1
 
     posts = driver.find_elements_by_class_name('threadtitle')
-    for post in posts:
-        print(post.text)
+    #for post in posts:
+    #    print(post.text)
 
     while True:
         try:
             link = driver.find_element_by_link_text(str(page_number))
         except NoSuchElementException:
             break
+
+        posts = driver.find_elements_by_class_name('threadtitle')
+        for post in posts:
+            print(post.text)
+            counter += 1
         link.click()
         print(driver.current_url)
         page_number += 1
-
+    print(counter)
     '''
     while do_continue:
         posts = driver.find_elements_by_class_name('threadtitle')
