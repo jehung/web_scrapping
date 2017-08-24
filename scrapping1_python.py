@@ -22,10 +22,19 @@ def lookup(driver):
     do_continue = True
     counter = 0
     driver.get('http://www.f150ecoboost.net/forum/68-2016-ford-f150-ecoboost-chat')
-    posts = driver.find_elements_by_class_name('threadtitle')
+    driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
 
-    for post in posts:
-        print(post.text)
+    while do_continue:
+        posts = driver.find_elements_by_class_name('threadtitle')
+        for post in posts:
+            print(post.text)
+
+        try:
+            driver.find_element_by_xpath('''//*[@id="yui-gen11"]/span[10]/a/img''').click()
+            print('I am here')
+            time.sleep(2)
+        except:
+            do_continue = False
 
 
 
