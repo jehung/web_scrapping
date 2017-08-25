@@ -30,23 +30,29 @@ def lookup(driver):
     counter3 = 0
     page_number = 1
 
-    while True==1:
+    while page_number==1:
         try:
             link = driver.find_element_by_link_text(str(page_number))
         except NoSuchElementException:
             break
 
-        posts = driver.find_elements_by_class_name('threadtitle')
+        posts = driver.find_elements_by_xpath('''.//*[@class='rating0 nonsticky']''')
         for post in posts:
+            title = post.find_element_by_xpath('''.//a[@class='title']''')
+            print(title.text)
+            print(title.get_attribute('href'))
             #print(post.find_element_by_css_selector('a').get_attribute('href'))
-            post_dict['link'].append(post.find_element_by_css_selector('a').get_attribute('href'))
+            #post_dict['link'].append(post.find_element_by_css_selector('a').get_attribute('href'))
             #print(post.text)
-            post_dict['title'].append(post.text)
+            #post_dict['title'].append(post.find_element_by_xpath('''.//a[@class='title']''').text)
+            print(post.find_element_by_xpath('''.//*[@class='threadstats td alt']''').text)
+            print(post.find_element_by_xpath('''.//*[@class='threadlastpost td']''').text)
             counter1 += 1
         print(counter1)
 
+        #// *[ @ id = "thread_51265"] / div / div / div / h3
 
-
+        """
         #stats_h = driver.find_elements_by_xpath('''//*[@class='threadstats td']''')
         post_dict['stats'].append(driver.find_elements_by_xpath('''//*[@class='threadstats td']'''))
         counter2 += 1
@@ -63,6 +69,7 @@ def lookup(driver):
             post_dict['last_post_date'].append(postdate.text.split(','))
             counter3 += 1
         print(counter3)
+        """
 
         link.click()
         print(driver.current_url)
@@ -81,6 +88,6 @@ if __name__ == '__main__':
     for e in data:
         print(e)
         print(len(data[e]))
-    data = pd.DataFrame(data.items())#, columns=['link', 'title', 'stats', 'last_post_date'])
-    #data = pd.DataFrame.from_dict(data)
+    #data = pd.DataFrame(data.items())#, columns=['link', 'title', 'stats', 'last_post_date'])
+    data = pd.DataFrame.from_dict(data)
     print(data.head())
