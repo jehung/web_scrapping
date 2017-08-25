@@ -30,7 +30,7 @@ def lookup(driver):
     counter3 = 0
     page_number = 1
 
-    while page_number==1:
+    while True:
         try:
             link = driver.find_element_by_link_text(str(page_number))
         except NoSuchElementException:
