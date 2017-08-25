@@ -1,6 +1,7 @@
 ## Goal: get the thread that is top 100 popular: by views, by replies
-
 ## Write function to sort by reviews or replies
+## .csv file to contain: link_to_thread, name_of_thread, views, replies, last_post_time, last_post_date
+
 
 
 import time
@@ -36,6 +37,7 @@ def lookup(driver):
 
         posts = driver.find_elements_by_class_name('threadtitle')
         for post in posts:
+            print(post.find_element_by_css_selector('a').get_attribute('href'))
             print(post.text)
 
             #stats = post.find_element_by_xpath('''//*[@class='threadstats td alt']''')
@@ -50,24 +52,8 @@ def lookup(driver):
         link.click()
         print(driver.current_url)
         page_number += 1
-
-
-
     print(counter)
 
-    '''
-    while do_continue:
-        posts = driver.find_elements_by_class_name('threadtitle')
-        for post in posts:
-            print(post.text)
-
-        try:
-            driver.find_element_by_xpath("""//*[@id="yui-gen11"]/span[10]/a/img""").click()
-            print('I am here')
-            time.sleep(2)
-        except:
-            do_continue = False
-    '''
 
 if __name__ == '__main__':
     driver = init_driver()
