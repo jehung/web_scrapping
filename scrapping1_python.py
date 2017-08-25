@@ -37,11 +37,22 @@ def lookup(driver):
         posts = driver.find_elements_by_class_name('threadtitle')
         for post in posts:
             print(post.text)
-            print(post.find_element_by_xpath('''//*[@class='threadstats td alt']''').text)
+
+            #stats = post.find_element_by_xpath('''//*[@class='threadstats td alt']''')
+            #for stat in stats:
+            #print(stats.text)
+
+        stats = driver.find_elements_by_xpath('''//*[@class='threadstats td alt']''')
+        for stat in stats:
+            print(stat.text)
+
             counter += 1
         link.click()
         print(driver.current_url)
         page_number += 1
+
+
+
     print(counter)
 
     '''
