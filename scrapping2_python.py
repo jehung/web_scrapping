@@ -40,17 +40,21 @@ def lookup(driver):
         for post in posts:
             title = post.find_element_by_xpath('''.//a[@class='title']''')
             print(title.text)
+            post_dict['title'].append(title.text)
             print(title.get_attribute('href'))
+            post_dict['link'].append(title.get_attribute('href'))
             #print(post.find_element_by_css_selector('a').get_attribute('href'))
             #post_dict['link'].append(post.find_element_by_css_selector('a').get_attribute('href'))
             #print(post.text)
             #post_dict['title'].append(post.find_element_by_xpath('''.//a[@class='title']''').text)
             print(post.find_element_by_xpath('''.//*[@class='threadstats td alt']''').text)
+            post_dict['stats'].append(post.find_element_by_xpath('''.//*[@class='threadstats td alt']''').text)
             print(post.find_element_by_xpath('''.//*[@class='threadlastpost td']''').text)
+            post_dict['last_post_date'].append(post.find_element_by_xpath('''.//*[@class='threadlastpost td']''').text)
             counter1 += 1
         print(counter1)
 
-        #// *[ @ id = "thread_51265"] / div / div / div / h3
+
 
         """
         #stats_h = driver.find_elements_by_xpath('''//*[@class='threadstats td']''')
