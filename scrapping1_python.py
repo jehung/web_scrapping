@@ -1,7 +1,7 @@
 ## Goal: get the thread that is top 100 popular: by views, by replies
 ## Write function to sort by reviews or replies
 ## .csv file to contain: link_to_thread, name_of_thread, views, replies, last_post_time, last_post_date
-
+## TODO: convert lastpost date/time to datetime
 
 
 import time
@@ -47,6 +47,10 @@ def lookup(driver):
         stats = driver.find_elements_by_xpath('''//*[@class='threadstats td alt']''')
         for stat in stats:
             print(stat.text)
+
+        postdates = driver.find_elements_by_xpath('''//*[@class='threadlastpost td']''')
+        for postdate in postdates:
+            print(postdate.text)
 
             counter += 1
         link.click()
