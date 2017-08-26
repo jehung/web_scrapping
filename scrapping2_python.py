@@ -68,16 +68,22 @@ def lookup(driver):
 def process_df(post_dict):
     post_dict['Last_post_date'] = post_dict.last_post_stats.apply(lambda x: (x.split(',')[0]).split('\n')[1])
     post_dict['Last_post_time'] = post_dict.last_post_stats.apply(lambda x: x.split(',')[1])
+
+    post_dict.Last_post_date = post_dict.Last_post_date.apply(
+        lambda x: datetime.datetime.strptime(x, '%m-%d-%Y') if x not in ('Yesterday', 'Today') else x)
+    post_dict.Last_post_time = post_dict.Last_post_time.apply(
+        lambda x: (time.strftime('%H:%M', time.strptime(x, ' %I:%M %p'))))
+
     post_dict['Replies'] = post_dict.stats.apply(lambda x: int((x.split('\n')[0]).split(':')[1].replace(',', '')))
     post_dict['Views'] = post_dict.stats.apply(lambda x: int(((x.split('\n')[1]).split(': ')[1]).replace(',', '')))
     post_dict.drop(['last_post_stats', 'stats'], axis=1, inplace=True)
 
     return post_dict
 
-
 def sort_values_by(df, by, ascending):
     sorted_df = df.sort_values(by=by, ascending=ascending)
     return sorted_df
+
 
 
 if __name__ == '__main__':
