@@ -5,6 +5,7 @@
 
 
 import time
+import datetime
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -30,7 +31,7 @@ def lookup(driver):
     counter3 = 0
     page_number = 1
 
-    while True:
+    while page_number==1:
         try:
             link = driver.find_element_by_link_text(str(page_number))
         except NoSuchElementException:
@@ -56,30 +57,27 @@ def lookup(driver):
 
 
 
-        """
-        #stats_h = driver.find_elements_by_xpath('''//*[@class='threadstats td']''')
-        post_dict['stats'].append(driver.find_elements_by_xpath('''//*[@class='threadstats td']'''))
-        counter2 += 1
-        stats = driver.find_elements_by_xpath('''//*[@class='threadstats td alt']''')
-        for stat in stats:
-            #print(stat.text)
-            post_dict['stats'].append(stat.text)
-            counter2 += 1
-        print(counter2)
-
-        postdates = driver.find_elements_by_xpath('''//*[@class='threadlastpost td']''')
-        for postdate in postdates:
-            #print(postdate.text)
-            post_dict['last_post_date'].append(postdate.text.split(','))
-            counter3 += 1
-        print(counter3)
-        """
 
         link.click()
         print(driver.current_url)
         page_number += 1
 
     return post_dict
+
+
+def process_df(post_dict):
+    post_dict['Last_post_date'] = post_dict.last_post_stats.apply(lambda x: (x.split(',')[0]).split('\n')[1])
+    post_dict['Last_post_time'] = post_dict.last_post_stats.apply(lambda x: x.split(',')[1])
+    post_dict['Replies'] = post_dict.stats.apply(lambda x: int((x.split('\n')[0]).split(':')[1].replace(',', '')))
+    post_dict['Views'] = post_dict.stats.apply(lambda x: int(((x.split('\n')[1]).split(': ')[1]).replace(',', '')))
+    post_dict.drop(['last_post_stats', 'stats'], axis=1, inplace=True)
+
+    return post_dict
+
+
+def sort_values_by(df, by, ascending):
+    sorted_df = df.sort_values(by=by, ascending=ascending)
+    return sorted_df
 
 
 if __name__ == '__main__':
@@ -94,4 +92,5 @@ if __name__ == '__main__':
         print(len(data[e]))
     #data = pd.DataFrame(data.items())#, columns=['link', 'title', 'stats', 'last_post_date'])
     data = pd.DataFrame.from_dict(data)
+    data = process_df(data)
     print(data.head())
