@@ -25,16 +25,14 @@ def init_driver():
 def lookup(driver):
     post_dict = {'link': [], 'title': [], 'stats': [], 'last_post_stats': []}
     driver.get('http://www.f150ecoboost.net/forum/68-2016-ford-f150-ecoboost-chat')
-    #driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
+    driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
     counter1 = 0
-    page_number = 1
-    check = driver.find_element_by_css_selector('a').get_attribute('href')
 
     while True:
         try:
-            page = driver.find_element_by_link_text(str(page_number))
+            #page = driver.find_element_by_link_text(str(page_number))
+            page = driver.find_element_by_xpath('''//img[@title='Next']''')
             page.click()
-            page_number += 1
             posts = driver.find_elements_by_xpath('''.//*[@id='threads']''')
             for post in posts:
                 titles = post.find_elements_by_xpath('''//a[@class='title']''')
