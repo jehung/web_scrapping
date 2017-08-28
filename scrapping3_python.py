@@ -23,40 +23,41 @@ def init_driver():
 
 
 def lookup(driver):
-    post_dict =  {'link':[], 'title':[], 'stats':[], 'last_post_stats':[]}
+    post_dict = {'link': [], 'title': [], 'stats': [], 'last_post_stats': []}
     driver.get('http://www.f150ecoboost.net/forum/68-2016-ford-f150-ecoboost-chat')
-    driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
+    #driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
     counter1 = 0
-    counter2 = 0
-    counter3 = 0
     page_number = 1
+    check = driver.find_element_by_css_selector('a').get_attribute('href')
 
     while True:
         try:
-            link = driver.find_element_by_link_text(str(page_number))
+            page = driver.find_element_by_link_text(str(page_number))
+            page.click()
+            page_number += 1
+            posts = driver.find_elements_by_xpath('''.//*[@id='threads']''')
+            for post in posts:
+                titles = post.find_elements_by_xpath('''//a[@class='title']''')
+                for title in titles:
+                    # print(title.text)
+                    post_dict['title'].append(title.text)
+                    # print(title.get_attribute('href'))
+                    post_dict['link'].append(title.get_attribute('href'))
+                subs_stats = post.find_elements_by_xpath('''.//*[@class='threadstats td alt']''')
+                for sub_stats in subs_stats:
+                    # print(sub_stats.text)
+                    post_dict['stats'].append(sub_stats.text)
+                subs_dates = post.find_elements_by_xpath('''.//*[@class='threadlastpost td']''')
+                for sub_dates in subs_dates:
+                    # print(sub_dates.text)
+                    post_dict['last_post_stats'].append(sub_dates.text)
+                counter1 += 1
+            print(counter1)
+            print(driver.current_url)
         except NoSuchElementException:
-            break
-
-        posts = driver.find_elements_by_xpath('''.//*[@class='rating0 nonsticky']''')
-        for post in posts:
-            title = post.find_element_by_xpath('''.//a[@class='title']''')
-            #print(title.text)
-            post_dict['title'].append(title.text)
-            #print(title.get_attribute('href'))
-            post_dict['link'].append(title.get_attribute('href'))
-            #print(post.find_element_by_xpath('''.//*[@class='threadstats td alt']''').text)
-            post_dict['stats'].append(post.find_element_by_xpath('''.//*[@class='threadstats td alt']''').text)
-            #print(post.find_element_by_xpath('''.//*[@class='threadlastpost td']''').text)
-            post_dict['last_post_stats'].append(post.find_element_by_xpath('''.//*[@class='threadlastpost td']''').text)
-            counter1 += 1
-        print(counter1)
-
-        link.click()
-        print(driver.current_url)
-        page_number += 1
-
+            print('i am done')
+            return post_dict
     return post_dict
-
 
 def process_df(post_dict):
     post_dict['Last_post_date'] = post_dict.last_post_stats.apply(lambda x: (x.split(',')[0]).split('\n')[1])
@@ -92,4 +93,4 @@ if __name__ == '__main__':
     #data = pd.DataFrame(data.items())#, columns=['link', 'title', 'stats', 'last_post_date'])
     data = pd.DataFrame.from_dict(data)
     data = process_df(data)
-    print(data.head())
+    print(data)
