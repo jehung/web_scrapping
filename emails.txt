@@ -1,0 +1,11 @@
+Hi Leo, 
+
+Good morning! Attach please find the Python script (in both .py and ipynb format - with the same code content), and the .csv file containing the top 100 posts by popularity. 
+
+In writing the script, I had used the Ford F150 EcoBoost Forum 2016 to write the code. But the script works for 2015, 2016 and 2017 forums. 
+
+I had fun taking this test. I hope I will talk to you soon.
+
+Best, 
+
+Jenny
