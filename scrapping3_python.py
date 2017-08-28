@@ -1,38 +1,33 @@
 ## Goal: get the thread that is top 100 popular: by views, by replies
 ## Write function to sort by reviews or replies
 ## .csv file to contain: link_to_thread, name_of_thread, views, replies, last_post_time, last_post_date
-## TODO: convert lastpost date/time to datetime
+
 
 
 import time
 import datetime
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
 
 
 
 def init_driver():
     driver = webdriver.Chrome()
+    driver.maximize_window()
     driver.wait = WebDriverWait(driver, 3)
     return driver
 
 
 def lookup(driver):
     post_dict = {'link': [], 'title': [], 'stats': [], 'last_post_stats': []}
-    driver.get('http://www.f150ecoboost.net/forum/68-2016-ford-f150-ecoboost-chat')
-    driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
+    # driver.get('http://www.f150ecoboost.net/forum/68-2016-ford-f150-ecoboost-chat')
+    driver.get('http://www.f150ecoboost.net/forum/42-2015-ford-f150-ecoboost-chat')
     counter1 = 0
 
     while True:
         try:
-            #page = driver.find_element_by_link_text(str(page_number))
-            page = driver.find_element_by_xpath('''//img[@title='Next']''')
-            page.click()
+            driver.find_element_by_xpath('''//*[@id="yui-gen11"]''').click()
             posts = driver.find_elements_by_xpath('''.//*[@id='threads']''')
             for post in posts:
                 titles = post.find_elements_by_xpath('''//a[@class='title']''')
@@ -44,31 +39,41 @@ def lookup(driver):
                 subs_stats = post.find_elements_by_xpath('''.//*[@class='threadstats td alt']''')
                 for sub_stats in subs_stats:
                     # print(sub_stats.text)
-                    post_dict['stats'].append(sub_stats.text)
+                    if sub_stats.text != '&nbsp;':
+                        post_dict['stats'].append(sub_stats.text)
                 subs_dates = post.find_elements_by_xpath('''.//*[@class='threadlastpost td']''')
                 for sub_dates in subs_dates:
                     # print(sub_dates.text)
-                    post_dict['last_post_stats'].append(sub_dates.text)
+                    if sub_dates.text != '&nbsp;':
+                        post_dict['last_post_stats'].append(sub_dates.text)
                 counter1 += 1
             print(counter1)
             print(driver.current_url)
-        except NoSuchElementException:
-            print('i am done')
+            page = driver.find_element_by_xpath('''//img[@alt='Next']''')
+            page.click()
+        except:
             return post_dict
-    return post_dict
+
 
 def process_df(post_dict):
-    post_dict['Last_post_date'] = post_dict.last_post_stats.apply(lambda x: (x.split(',')[0]).split('\n')[1])
-    post_dict['Last_post_time'] = post_dict.last_post_stats.apply(lambda x: x.split(',')[1])
+    post_dict['last_post_datetime'] = (post_dict.last_post_stats.apply(lambda x:x.split('\n'))).str[1]
+    post_dict['Last_post_date'] = (post_dict.last_post_datetime.str.split(', ')).str[0]
+    post_dict['Last_post_time'] = (post_dict.last_post_datetime.str.split(', ')).str[1]
 
-    post_dict.Last_post_date = post_dict.Last_post_date.apply(
-        lambda x: datetime.datetime.strptime(x, '%m-%d-%Y') if x not in ('Yesterday', 'Today') else x)
-    post_dict.Last_post_time = post_dict.Last_post_time.apply(
-        lambda x: (time.strftime('%H:%M', time.strptime(x, ' %I:%M %p'))))
+    #post_dict.Last_post_date = post_dict.Last_post_date.apply(
+    #    lambda x: datetime.datetime.strptime(x, '%m-%d-%Y') if x not in ('Yesterday', 'Today') else x)
+    #post_dict.Last_post_time = post_dict.Last_post_time.apply(
+    #    lambda x: (time.strftime('%H:%M', time.strptime(x, '%I:%M %p'))))
 
-    post_dict['Replies'] = post_dict.stats.apply(lambda x: int((x.split('\n')[0]).split(':')[1].replace(',', '')))
-    post_dict['Views'] = post_dict.stats.apply(lambda x: int(((x.split('\n')[1]).split(': ')[1]).replace(',', '')))
-    post_dict.drop(['last_post_stats', 'stats'], axis=1, inplace=True)
+    #post_dict['repliesString'] = post_dict.stats.apply(lambda x: (x.split('\n'))[0])#.split(':')[1])
+    #post_dict['Replies'] = post_dict.repliesString.str.split(':').str[1]
+    post_dict['repliesViews'] = post_dict.stats.apply(lambda x: x.replace(',',''))
+    post_dict['counts'] = post_dict.repliesViews.apply(lambda x:[int(s) for s in x.split() if s.isdigit()])
+    post_dict['Replies'] = post_dict.counts.str[0]
+    post_dict['Views'] = post_dict.counts.str[1]
+    #post_dict['Views'] = post_dict.stats.apply(lambda x: (x.split('\n'))[1])#.split(':')[1])
+    #post_dict['Views'] = post_dict.stats.apply(lambda x: (x.split('\n'))[1].split(':')[1])
+    post_dict.drop(['last_post_stats', 'stats', 'last_post_datetime', 'repliesViews', 'counts'], axis=1, inplace=True)
 
     return post_dict
 
@@ -88,7 +93,9 @@ if __name__ == '__main__':
     for e in data:
         print(e)
         print(len(data[e]))
-    #data = pd.DataFrame(data.items())#, columns=['link', 'title', 'stats', 'last_post_date'])
     data = pd.DataFrame.from_dict(data)
     data = process_df(data)
-    print(data)
+    sorted_data = sort_values_by(data, ['Replies', 'Views'], [False, False])
+    #another use-case below:
+    #another = sorted_data.groupby('Last_post_date').apply(pd.DataFrame.sort_values, 'Replies')
+    sorted_data.to_csv('Top100_Posts.csv')
