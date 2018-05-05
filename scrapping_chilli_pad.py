@@ -54,7 +54,7 @@ def lookup(driver, sd, ed):
     driver.find_element_by_xpath("//input[@type='submit']").click()
 
     # now get conversion data
-    post_dict = {'conversion_id': [], 'sub_id': [], 'datetime': [], 'status': [],
+    post_dict = {'conversion_id': [], 'datetime': [], 'status': [],
                  'pmt_status':[], 'total_itmes':[], 'curr':[], 'order_total':[],
                  'commission':[]}
     #driver.get('https://chilitechnology.refersion.com/affiliate/conversions')
@@ -62,9 +62,8 @@ def lookup(driver, sd, ed):
 
     has_more = True
     while has_more:
-        button = driver.find_element_by_link_text('Load More')
-        href_data = button.get_attribute('href')
         try:
+            button = driver.find_element_by_link_text('Load More')
             button.click()
         except: #href_data is None:
             has_more = False
@@ -90,43 +89,32 @@ def lookup(driver, sd, ed):
 
 
 def process_df(post_dict):
-    post_dict['last_post_datetime'] = (post_dict.last_post_stats.apply(lambda x:x.split('\n'))).str[1]
-    post_dict['Last_post_date'] = (post_dict.last_post_datetime.str.split(', ')).str[0]
-    post_dict['Last_post_time'] = (post_dict.last_post_datetime.str.split(', ')).str[1]
-
-    post_dict['repliesViews'] = post_dict.stats.apply(lambda x: x.replace(',',''))
-    post_dict['counts'] = post_dict.repliesViews.apply(lambda x:[int(s) for s in x.split() if s.isdigit()])
-    post_dict['Replies'] = post_dict.counts.str[0]
-    post_dict['Views'] = post_dict.counts.str[1]
-    post_dict.drop(['last_post_stats', 'stats', 'last_post_datetime', 'repliesViews', 'counts'], axis=1, inplace=True)
+    post_dict['date'] = (post_dict.datetime.apply(lambda x:pd.to_datetime(x)))
+    post_dict['order_total'] = (post_dict.order_total.str.replace('$', ''))
+    post_dict['commission'] = (post_dict.commission.str.replace('$', ''))
 
     return post_dict
 
-
-def sort_values_by(df, by, ascending):
-    sorted_df = df.sort_values(by=by, ascending=ascending)
-    return sorted_df
 
 
 if __name__ == '__main__':
     driver = init_driver()
 
-    ans = lookup(driver, '2018-02-01', '2018-05-03')
-    print(ans)
+    data = lookup(driver, '2018-02-01', '2018-05-03')
+    print(data)
 
-    '''
-    data = lookup(driver)
     time.sleep(5)
     driver.quit()
 
+    for d in data:
+        print(d)
+        print(len(data[d]))
 
-    for e in data:
-        print(e)
-        print(len(data[e]))
+
     data = pd.DataFrame.from_dict(data)
     data = process_df(data)
-    sorted_data = sort_values_by(data, ['Replies', 'Views'], [False, False])
+    data['site]'] = 'thesleepjudge.com'
+    sorted_data = data.sort_values('date')
     #another use-case below:
     #another = sorted_data.groupby('Last_post_date').apply(pd.DataFrame.sort_values, 'Replies')
-    sorted_data.to_csv('Top100_Posts.csv')
-    '''
+    sorted_data.to_csv('cilli_conversions.csv')
