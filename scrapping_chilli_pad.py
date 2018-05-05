@@ -54,10 +54,9 @@ def lookup(driver, sd, ed):
     driver.find_element_by_xpath("//input[@type='submit']").click()
 
     # now get conversion data
-    post_dict = {'conversion_id': [], 'datetime': [], 'status': [],
+    post_dict = {'reason':[], 'conversion_id': [], 'datetime': [], 'status': [],
                  'pmt_status':[], 'total_itmes':[], 'curr':[], 'order_total':[],
                  'commission':[]}
-    #driver.get('https://chilitechnology.refersion.com/affiliate/conversions')
     counter1 = 0
 
     has_more = True
@@ -69,11 +68,14 @@ def lookup(driver, sd, ed):
             has_more = False
 
     rows = driver.find_element_by_xpath('//table[@class="table table-hover table-striped table-bordered"]').find_elements_by_tag_name('tr')
-    for row in rows:
-        print(row.text)
-        if len(row.text) >= 1 and 'Conversion' not in row.text and 'Load' not in row.text:
-            cells = row.text.strip().split(' ')
+    for i in range(len(rows)):
+        print(rows[i].text)
+        if len(rows[i].text) >= 1 and 'Conversion' not in rows[i].text and 'Load' not in rows[i].text:
+            meta =rows[i].find_element_by_xpath('.//*[@data-toggle="tooltip"]').get_attribute('data-original-title')
+            cells = rows[i].text.strip().split(' ')
+            print(meta)
             print(cells)
+            post_dict['reason'].append(meta)
             post_dict['conversion_id'].append(cells[0])
             datetime = cells[1]+' '+cells[2]+','+cells[3]
             post_dict['datetime'].append(datetime)
@@ -114,7 +116,7 @@ if __name__ == '__main__':
     data = pd.DataFrame.from_dict(data)
     data = process_df(data)
     data['site]'] = 'thesleepjudge.com'
-    sorted_data = data.sort_values('date')
+    sorted_data = data.sort_values('date', ascending=False)
     #another use-case below:
     #another = sorted_data.groupby('Last_post_date').apply(pd.DataFrame.sort_values, 'Replies')
     sorted_data.to_csv('cilli_conversions.csv')
