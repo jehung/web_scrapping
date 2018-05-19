@@ -48,45 +48,54 @@ def lookup(driver, sd, ed):
     datepicker_to.send_keys(ed)
 
     # submit
-    driver.find_element_by_xpath("//button[@type='button']").click()
+    driver.find_element_by_xpath("//div[@class='affiliateplus-search-button']/button[2]").click()
 
     # now get conversion data
     post_dict = {'number':[], 'date': [], 'product_name': [], 'total_amount': [],
                  'commission':[], 'status':[]}
 
+    total_items = driver.find_element_by_class_name("amount").text.strip().split(' ')[-2]
+    print(total_items)
 
-    '''
-    counter = 0
-    has_more = True
-    while has_more:
-        try:
-            driver.find_element_by_link_text('Load More').click()
-            counter += 1
-            print(counter)
-        except: #href_data is None:
-            has_more = False
 
-    rows = driver.find_element_by_xpath('//table[@class="table table-hover table-striped table-bordered"]').find_elements_by_tag_name('tr')
-    for i in range(len(rows)):
-        print(rows[i].text)
-        if len(rows[i].text) >= 1 and 'Conversion' not in rows[i].text and 'Load' not in rows[i].text:
-            meta =rows[i].find_element_by_xpath('.//*[@data-toggle="tooltip"]').get_attribute('data-original-title')
+    #10 per page
+    total_pages = int(int(total_items)/10)+1
+    for p in range(1, int(total_pages)+1):
+        if p == 1:
+            pass
+        else:
+            #driver.get('https://www.slumbercloud.com/affiliates/index/listTransaction/?limit=10&p='+str(p))
+            driver.find_element_by_link_text(str(p)).click()
+
+        rows = driver.find_element_by_xpath(
+            '//table[@class="table table-bordered table-hover no-margin"]').find_elements_by_tag_name('tr')
+        for i in range(len(rows)):
+            #print(rows[i].text)
             cells = rows[i].text.strip().split(' ')
-            print(meta)
-            print(cells)
-            post_dict['reason'].append(meta)
-            post_dict['conversion_id'].append(cells[0])
-            datetime = cells[1]+' '+cells[2]+','+cells[3]
-            post_dict['datetime'].append(datetime)
-            post_dict['status'].append(cells[6])
-            post_dict['pmt_status'].append(cells[7])
-            post_dict['total_itmes'].append(cells[8])
-            post_dict['curr'].append(cells[9])
-            post_dict['order_total'].append(cells[10])
-            post_dict['commission'].append(cells[11])
-            
-    '''
+            if len(cells) >= 3 and 'No.' not in rows[i].text:
+                #meta =rows[i].find_element_by_xpath('.//*[@data-toggle="table"]').get_attribute('data-original-title')
+                #print(meta)
+                print(cells)
+                #post_dict['reason'].append(meta)
+                post_dict['number'].append(cells[0])
+                datetime = cells[1]+' '+cells[2]+','+cells[3]
+                post_dict['date'].append(datetime)
+                post_dict['total_amount'].append(cells[-3])
+                post_dict['commission'].append(cells[-2])
+                post_dict['status'].append(cells[-1])
+                cells.pop(0)
+                cells.pop(1)
+                cells.pop(2)
+                cells.pop(3)
+                cells.pop(-1)
+                cells.pop(-2)
+                cells.pop(-3)
+                post_dict['product_name'].append(' '.join(cells))
+
+
+
     return post_dict
+
 
 
 def process_df(post_dict):
