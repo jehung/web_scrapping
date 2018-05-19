@@ -6,7 +6,7 @@
 
 
 import time
-import datetime
+import datetime as dt
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait, Select
@@ -57,13 +57,14 @@ def lookup(driver, sd, ed):
     post_dict = {'reason':[], 'conversion_id': [], 'datetime': [], 'status': [],
                  'pmt_status':[], 'total_itmes':[], 'curr':[], 'order_total':[],
                  'commission':[]}
-    counter1 = 0
 
+    counter = 0
     has_more = True
     while has_more:
         try:
-            button = driver.find_element_by_link_text('Load More')
-            button.click()
+            driver.find_element_by_link_text('Load More').click()
+            counter += 1
+            print(counter)
         except: #href_data is None:
             has_more = False
 
@@ -85,7 +86,6 @@ def lookup(driver, sd, ed):
             post_dict['curr'].append(cells[9])
             post_dict['order_total'].append(cells[10])
             post_dict['commission'].append(cells[11])
-            counter1 += 1
 
     return post_dict
 
@@ -101,12 +101,12 @@ def process_df(post_dict):
 
 if __name__ == '__main__':
     driver = init_driver()
+    ed = (dt.datetime.now() - dt.timedelta(days=1))
+    sd = (ed - dt.timedelta(days=65)).strftime('%Y-%m-%d')
+    ed = ed.strftime('%Y-%m-%d')
 
-    data = lookup(driver, '2018-02-01', '2018-05-03')
+    data = lookup(driver, sd, ed)
     print(data)
-
-    time.sleep(5)
-    driver.quit()
 
     for d in data:
         print(d)
@@ -120,3 +120,4 @@ if __name__ == '__main__':
     #another use-case below:
     #another = sorted_data.groupby('Last_post_date').apply(pd.DataFrame.sort_values, 'Replies')
     sorted_data.to_csv('cilli_conversions.csv')
+    driver.close()
