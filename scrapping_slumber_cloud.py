@@ -21,7 +21,7 @@ def init_driver():
     return driver
 
 
-def lookup(driver, sd, ed):
+def lookup_commissions(driver, sd, ed):
     # Log in first
     driver.get('https://www.slumbercloud.com/affiliates/account/login/')
 
@@ -64,8 +64,10 @@ def lookup(driver, sd, ed):
         if p == 1:
             pass
         else:
-            #driver.get('https://www.slumbercloud.com/affiliates/index/listTransaction/?limit=10&p='+str(p))
-            driver.find_element_by_link_text(str(p)).click()
+            try:
+                driver.find_element_by_link_text(str(p)).click()
+            except:
+                pass
 
         rows = driver.find_element_by_xpath(
             '//table[@class="table table-bordered table-hover no-margin"]').find_elements_by_tag_name('tr')
@@ -98,10 +100,60 @@ def lookup(driver, sd, ed):
 
 
 
+def lookup_traffics(driver, sd, ed):
+    driver.find_element_by_link_text("Traffics").click()
+    # now get traffics data
+    post_dict = {'traffic_source':[], 'clicks': [], 'uniuqe_clicks': [], 'store_view': [],
+                 'landing_page':[]}
+
+    total_items = driver.find_element_by_class_name("amount").text.strip().split(' ')[-2]
+    print(total_items)
+
+
+    #10 per page
+    total_pages = int(int(total_items)/10)+1
+    for p in range(1, int(total_pages)+1):
+        if p == 1:
+            pass
+        else:
+            #driver.get('https://www.slumbercloud.com/affiliates/index/listTransaction/?limit=10&p='+str(p))
+            driver.find_element_by_link_text(str(p)).click()
+
+        rows = driver.find_element_by_xpath('//table[@id="referer_grid"]').find_elements_by_tag_name('tr')
+        for i in range(len(rows)):
+            #print(rows[i].text)
+            cells = rows[i].text.strip().split(' ')
+            if len(cells) >= 5 and 'Source' not in cells:
+                #meta =rows[i].find_element_by_xpath('.//*[@data-toggle="table"]').get_attribute('data-original-title')
+                #print(meta)
+                print(cells)
+                #post_dict['reason'].append(meta)
+                post_dict['traffic_source'].append(cells[0])
+                post_dict['clicks'].append(cells[1])
+                post_dict['uniuqe_clicks'].append(cells[2])
+                post_dict['landing_page'].append(cells[-1])
+                cells.pop(0)
+                cells.pop(1)
+                cells.pop(2)
+                cells.pop(-1)
+                post_dict['store_view'].append(' '.join(cells))
+
+    return post_dict
+
+
+
 def process_df(post_dict):
-    post_dict['date'] = (post_dict.datetime.apply(lambda x:pd.to_datetime(x)))
-    post_dict['order_total'] = (post_dict.order_total.str.replace('$', ''))
-    post_dict['commission'] = (post_dict.commission.str.replace('$', ''))
+    if 'commission' in post_dict:
+        post_dict['date'] = (post_dict.date.apply(lambda x:pd.to_datetime(x)))
+        post_dict['total_amount'] = (post_dict.total_amount.str.replace('$', ''))
+        post_dict['commission'] = (post_dict.commission.str.replace('$', ''))
+
+        post_dict['total_amount'] = (post_dict.total_amount.str.replace(',', ''))
+        post_dict['commission'] = (post_dict.commission.str.replace(',', ''))
+
+        post_dict['total_amount'] = post_dict['total_amount'].astype(float)
+        post_dict['commission'] = post_dict['commission'].astype(float)
+
 
     return post_dict
 
@@ -115,19 +167,21 @@ if __name__ == '__main__':
 
     print('sd', sd)
     print('ed', ed)
-    data = lookup(driver, sd, ed)
-    print(data)
+    comm_data = lookup_commissions(driver, sd, ed)
+    traffic_data = lookup_traffics(driver, sd, ed)
+    print(comm_data)
+    print(traffic_data)
 
-    for d in data:
-        print(d)
-        print(len(data[d]))
+    for td in traffic_data:
+        print(td)
+        print(len(traffic_data[td]))
 
+    #comm_data = pd.DataFrame.from_dict(comm_data)
+    #comm_data = process_df(comm_data)
+    #sorted_comm = comm_data.sort_values('date', ascending=False)
 
-    data = pd.DataFrame.from_dict(data)
-    data = process_df(data)
-    data['site]'] = 'thesleepjudge.com'
-    sorted_data = data.sort_values('date', ascending=False)
-    #another use-case below:
-    #another = sorted_data.groupby('Last_post_date').apply(pd.DataFrame.sort_values, 'Replies')
-    sorted_data.to_csv('cilli_conversions.csv')
+    traffic_data = pd.DataFrame.from_dict(traffic_data)
+    traffic_data = process_df(traffic_data)
+    traffic_data.to_csv('traffic.csv')
+
     driver.close()
