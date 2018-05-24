@@ -75,23 +75,33 @@ def lookup_commissions(driver, sd, ed):
             #print(rows[i].text)
             cells = rows[i].text.strip().split(' ')
             if len(cells) >= 3 and 'No.' not in rows[i].text:
+                to_remove = []
                 #meta =rows[i].find_element_by_xpath('.//*[@data-toggle="table"]').get_attribute('data-original-title')
                 #print(meta)
                 print(cells)
                 #post_dict['reason'].append(meta)
-                post_dict['number'].append(cells[0])
-                datetime = cells[1]+' '+cells[2]+','+cells[3]
+                number = cells[0]
+                post_dict['number'].append(number)
+                month = cells[1]
+                day = cells[2]
+                year = cells[3]
+                datetime = month+' '+day+','+year
                 post_dict['date'].append(datetime)
-                post_dict['total_amount'].append(cells[-3])
-                post_dict['commission'].append(cells[-2])
-                post_dict['status'].append(cells[-1])
-                cells.pop(0)
-                cells.pop(1)
-                cells.pop(2)
-                cells.pop(3)
-                cells.pop(-1)
-                cells.pop(-2)
-                cells.pop(-3)
+                total_amount = cells[-3]
+                post_dict['total_amount'].append(total_amount)
+                comm = cells[-2]
+                post_dict['commission'].append(comm)
+                status = cells[-1]
+                post_dict['status'].append(status)
+                cells.remove(number)
+                cells.remove(month)
+                cells.remove(day)
+                cells.remove(year)
+                cells.remove(status)
+                cells.remove(comm)
+                cells.remove(total_amount)
+                print('cells', cells)
+
                 post_dict['product_name'].append(' '.join(cells))
 
 
@@ -128,14 +138,20 @@ def lookup_traffics(driver, sd, ed):
                 #print(meta)
                 print(cells)
                 #post_dict['reason'].append(meta)
-                post_dict['traffic_source'].append(cells[0])
-                post_dict['clicks'].append(cells[1])
-                post_dict['uniuqe_clicks'].append(cells[2])
-                post_dict['landing_page'].append(cells[-1])
-                cells.pop(0)
-                cells.pop(1)
-                cells.pop(2)
-                cells.pop(-1)
+                traffic_source =cells[0]
+                post_dict['traffic_source'].append(traffic_source)
+                clicks = cells[1]
+                post_dict['clicks'].append(clicks)
+                u_clicks = cells[2]
+                post_dict['uniuqe_clicks'].append(u_clicks)
+                land_page = cells[-1]
+                post_dict['landing_page'].append(land_page)
+                cells.remove(traffic_source)
+                cells.remove(clicks)
+                cells.remove(u_clicks)
+                cells.remove(land_page)
+                print('cells', cells)
+
                 post_dict['store_view'].append(' '.join(cells))
 
     return post_dict
@@ -145,6 +161,7 @@ def lookup_traffics(driver, sd, ed):
 def process_df(post_dict):
     if 'commission' in post_dict:
         post_dict['date'] = (post_dict.date.apply(lambda x:pd.to_datetime(x)))
+
         post_dict['total_amount'] = (post_dict.total_amount.str.replace('$', ''))
         post_dict['commission'] = (post_dict.commission.str.replace('$', ''))
 
@@ -153,6 +170,8 @@ def process_df(post_dict):
 
         post_dict['total_amount'] = post_dict['total_amount'].astype(float)
         post_dict['commission'] = post_dict['commission'].astype(float)
+
+        post_dict['number'] = (post_dict.number.str.replace('#', ''))
 
 
     return post_dict
@@ -168,7 +187,9 @@ if __name__ == '__main__':
     print('sd', sd)
     print('ed', ed)
     comm_data = lookup_commissions(driver, sd, ed)
+    comm_data['site'] = 'thesleepjudge.com'
     traffic_data = lookup_traffics(driver, sd, ed)
+    traffic_data['site'] = 'thesleepjudge.com'
     print(comm_data)
     print(traffic_data)
 
@@ -176,12 +197,13 @@ if __name__ == '__main__':
         print(td)
         print(len(traffic_data[td]))
 
-    #comm_data = pd.DataFrame.from_dict(comm_data)
-    #comm_data = process_df(comm_data)
-    #sorted_comm = comm_data.sort_values('date', ascending=False)
+    comm_data = pd.DataFrame.from_dict(comm_data)
+    comm_data = process_df(comm_data)
+    sorted_comm = comm_data.sort_values('date', ascending=False)
 
     traffic_data = pd.DataFrame.from_dict(traffic_data)
     traffic_data = process_df(traffic_data)
+    comm_data.to_csv('commission.csv')
     traffic_data.to_csv('traffic.csv')
 
     driver.close()

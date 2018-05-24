@@ -1,29 +1,248 @@
-,commission,conversion_id,curr,datetime,order_total,pmt_status,status,total_itmes,date,site]
-27,67.35,2578483,USD,"Feb 09,,2018",336.75,Approved,Approved,1,2018-02-09,thesleepjudge.com
-25,149.85,2628301,USD,"Feb 18,,2018",749.25,Approved,Approved,1,2018-02-18,thesleepjudge.com
-26,149.85,2624817,USD,"Feb 18,,2018",749.25,Approved,Approved,1,2018-02-18,thesleepjudge.com
-24,-199.80,2629698,USD,"Feb 19,,2018",-999.00,Approved,Approved,1,2018-02-19,thesleepjudge.com
-23,67.35,2629829,USD,"Feb 19,,2018",336.75,Approved,Approved,1,2018-02-19,thesleepjudge.com
-22,164.85,2663082,USD,"Feb 24,,2018","1,020.75",Approved,Approved,1,2018-02-24,thesleepjudge.com
-21,149.85,2690172,USD,"Mar 01,,2018",749.25,Approved,Approved,1,2018-03-01,thesleepjudge.com
-20,94.35,2715204,USD,"Mar 05,,2018",471.75,Approved,Approved,1,2018-03-05,thesleepjudge.com
-19,89.85,2777590,USD,"Mar 15,,2018",449.25,Approved,Approved,1,2018-03-15,thesleepjudge.com
-18,134.70,2793859,USD,"Mar 18,,2018",673.50,Approved,Approved,2,2018-03-18,thesleepjudge.com
-17,164.85,2853132,USD,"Mar 28,,2018",898.56,Approved,Approved,1,2018-03-28,thesleepjudge.com
-16,89.85,2914898,USD,"Apr 08,,2018",449.25,Approved,Approved,1,2018-04-08,thesleepjudge.com
-15,67.35,2915687,USD,"Apr 08,,2018",336.75,Approved,Approved,1,2018-04-08,thesleepjudge.com
-14,67.35,2933776,USD,"Apr 11,,2018",336.75,Approved,Approved,1,2018-04-11,thesleepjudge.com
-13,149.85,2942947,USD,"Apr 13,,2018",828.49,Approved,Approved,1,2018-04-13,thesleepjudge.com
-12,-199.80,2944795,USD,"Apr 13,,2018",-999.00,Approved,Approved,1,2018-04-13,thesleepjudge.com
-11,199.80,2958114,USD,"Apr 16,,2018",999.00,Approved,Approved,1,2018-04-16,thesleepjudge.com
-10,74.85,2960920,USD,"Apr 16,,2018",374.25,Approved,Approved,1,2018-04-16,thesleepjudge.com
-9,89.85,2961696,USD,"Apr 16,,2018",449.25,Approved,Approved,1,2018-04-16,thesleepjudge.com
-8,74.85,2972100,USD,"Apr 18,,2018",374.25,Approved,Approved,1,2018-04-18,thesleepjudge.com
-7,67.35,2990939,USD,"Apr 21,,2018",336.75,Approved,Approved,1,2018-04-21,thesleepjudge.com
-6,97.35,2991717,USD,"Apr 21,,2018",486.75,Approved,Approved,1,2018-04-21,thesleepjudge.com
-5,74.85,2993694,USD,"Apr 22,,2018",374.25,Approved,Approved,1,2018-04-22,thesleepjudge.com
-4,149.85,2997378,USD,"Apr 23,,2018",749.25,Approved,Approved,1,2018-04-23,thesleepjudge.com
-3,164.85,3004196,USD,"Apr 24,,2018",824.25,Approved,Approved,1,2018-04-24,thesleepjudge.com
-2,164.85,3015747,USD,"Apr 25,,2018",824.25,Approved,Approved,1,2018-04-25,thesleepjudge.com
-1,74.85,3049731,USD,"May 01,,2018",374.25,Approved,Approved,1,2018-05-01,thesleepjudge.com
-0,89.85,3062335,USD,"May 03,,2018",449.25,Pending,Approved,1,2018-05-03,thesleepjudge.com
+,commission,date,number,product_name,status,total_amount,site]
+0,20.81,2018-05-18,#2181,May 2018 Mattress Cover $20.81,Complete,288.98,thesleepjudge.com
+2,12.67,2018-05-17,#2176,May Mattress $12.67,Complete,175.99,thesleepjudge.com
+3,0.0,2018-05-17,#2175,May Mattress $0.00,Canceled,217.99,thesleepjudge.com
+1,14.4,2018-05-17,#2178,May Mattress $14.40,Complete,199.99,thesleepjudge.com
+4,32.64,2018-05-16,#2173,"May 2018 Mattress Down Pillow
+Nacreous Cover $32.64",Complete,407.97,thesleepjudge.com
+5,17.44,2018-05-16,#2172,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+6,17.13,2018-05-16,#2171,May 2018 Mattress Essentials Dreamlite Mask $17.13,Complete,237.98,thesleepjudge.com
+7,14.4,2018-05-16,#2168,May Mattress $14.40,Complete,199.99,thesleepjudge.com
+8,25.92,2018-05-16,#2167,"May 2018 Mattress - Queen White
+Nacreous Pillow Covers - Queen White (2-pack)
+Nacreous Pillow Covers - Queen (2-pack) $25.92",Complete,359.97,thesleepjudge.com
+9,17.44,2018-05-15,#2166,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+10,16.24,2018-05-15,#2164,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+11,14.8,2018-05-15,#2162,May Mattress $14.80,Complete,199.99,thesleepjudge.com
+12,28.22,2018-05-15,#2161,May 2018 Mattress Cover $28.22,Complete,391.97,thesleepjudge.com
+15,13.68,2018-05-14,#2158,May Mattress $13.68,Complete,189.99,thesleepjudge.com
+13,16.92,2018-05-14,#2160,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+14,17.44,2018-05-14,#2159,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+16,18.8,2018-05-13,#2157,May Mattress $18.80,Complete,234.99,thesleepjudge.com
+17,18.8,2018-05-13,#2156,May Mattress $18.80,Complete,234.99,thesleepjudge.com
+18,12.88,2018-05-13,#2155,May Mattress $12.88,Complete,175.99,thesleepjudge.com
+19,23.47,2018-05-13,#2154,"May 2018 Mattress - King
+Cumulus Pillow - Soft $23.47",Complete,325.97,thesleepjudge.com
+20,14.4,2018-05-13,#2153,May Mattress $14.40,Complete,199.99,thesleepjudge.com
+21,12.67,2018-05-13,#2152,May Mattress $12.67,Complete,175.99,thesleepjudge.com
+22,16.24,2018-05-13,#2150,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+23,14.08,2018-05-12,#2148,May Mattress $14.08,Complete,175.99,thesleepjudge.com
+24,10.8,2018-05-12,#2147,May Mattress $10.80,Complete,134.99,thesleepjudge.com
+28,16.24,2018-05-11,#2138,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+29,17.44,2018-05-11,#2137,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+27,32.8,2018-05-11,#2139,May 2018 Mattress Set $32.80,Complete,424.98,thesleepjudge.com
+25,10.8,2018-05-11,#2143,May Mattress $10.80,Complete,134.99,thesleepjudge.com
+26,15.38,2018-05-11,#2141,May Mattress $15.38,Complete,192.24,thesleepjudge.com
+30,14.18,2018-05-09,#2132,May Mattress $14.18,Complete,192.24,thesleepjudge.com
+31,16.92,2018-05-09,#2131,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+32,15.2,2018-05-08,#2128,May Mattress $15.20,Complete,189.99,thesleepjudge.com
+33,15.7,2018-05-08,#2126,May Mattress $15.70,Complete,217.99,thesleepjudge.com
+34,18.8,2018-05-08,#2123,May Mattress $18.80,Complete,234.99,thesleepjudge.com
+41,15.7,2018-05-07,#2115,May Mattress $15.70,Complete,217.99,thesleepjudge.com
+45,20.16,2018-05-07,#2111,May Mattress $20.16,Complete,279.98,thesleepjudge.com
+44,16.24,2018-05-07,#2112,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+43,17.44,2018-05-07,#2113,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+42,11.78,2018-05-07,#2114,May Mattress $11.78,Complete,147.24,thesleepjudge.com
+40,17.44,2018-05-07,#2116,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+39,13.68,2018-05-07,#2118,May Mattress $13.68,Complete,170.99,thesleepjudge.com
+38,15.7,2018-05-07,#2119,May Mattress $15.70,Complete,217.99,thesleepjudge.com
+37,18.8,2018-05-07,#2120,May Mattress $18.80,Complete,234.99,thesleepjudge.com
+36,16.92,2018-05-07,#2121,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+35,16.0,2018-05-07,#2122,May Mattress $16.00,Complete,199.99,thesleepjudge.com
+46,15.38,2018-05-06,#2110,May Mattress $15.38,Complete,192.24,thesleepjudge.com
+47,16.92,2018-05-06,#2109,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+48,12.88,2018-05-06,#2108,May Mattress $12.88,Complete,175.99,thesleepjudge.com
+49,9.29,2018-05-05,#2101,"May Pillow
+Cumulus $9.29",Complete,128.98,thesleepjudge.com
+50,11.88,2018-05-05,#2099,May Mattress $11.88,Complete,164.99,thesleepjudge.com
+51,15.7,2018-05-05,#2098,May Mattress $15.70,Complete,217.99,thesleepjudge.com
+52,8.8,2018-05-05,#2097,2018 $8.80,Complete,109.98,thesleepjudge.com
+56,16.02,2018-05-04,#2090,May 2018 Pillow $16.02,Complete,200.23,thesleepjudge.com
+57,17.44,2018-05-04,#2089,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+58,12.67,2018-05-04,#2086,May Mattress $12.67,Complete,175.99,thesleepjudge.com
+55,18.14,2018-05-04,#2091,May 2018 Pillow Pad $18.14,Complete,241.73,thesleepjudge.com
+53,16.92,2018-05-04,#2094,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+54,16.24,2018-05-04,#2093,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+59,16.24,2018-05-03,#2085,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+61,12.67,2018-05-03,#2083,May Mattress $12.67,Complete,175.99,thesleepjudge.com
+62,16.92,2018-05-03,#2082,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+63,16.24,2018-05-03,#2080,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+60,16.92,2018-05-03,#2084,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+64,14.4,2018-05-02,#2079,May Mattress $14.40,Complete,199.99,thesleepjudge.com
+65,9.52,2018-05-02,#2077,May Mattress $9.52,Complete,139.99,thesleepjudge.com
+66,16.92,2018-05-02,#2076,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+67,17.6,2018-05-02,#2073,May Mattress $17.60,Complete,234.99,thesleepjudge.com
+68,13.68,2018-05-02,#2072,May Mattress $13.68,Complete,189.99,thesleepjudge.com
+69,16.92,2018-05-02,#2071,May Mattress $16.92,Complete,234.99,thesleepjudge.com
+72,17.44,2018-05-01,#2064,May Mattress $17.44,Complete,217.99,thesleepjudge.com
+73,16.24,2018-05-01,#2063,May Mattress $16.24,Complete,217.99,thesleepjudge.com
+70,12.48,2018-05-01,#2066,May Mattress $12.48,Complete,170.99,thesleepjudge.com
+71,14.4,2018-05-01,#2065,May Mattress $14.40,Complete,199.99,thesleepjudge.com
+74,12.67,2018-04-30,#2062,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+75,16.24,2018-04-30,#2060,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+76,26.96,2018-04-30,#2059,Apr Mattress $26.96,Complete,351.98,thesleepjudge.com
+77,14.08,2018-04-29,#2058,Apr Mattress $14.08,Complete,175.99,thesleepjudge.com
+78,15.7,2018-04-29,#2057,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+79,30.8,2018-04-28,#2056,Apr Mattress $30.80,Complete,399.98,thesleepjudge.com
+80,3.52,2018-04-28,#2055,2018 $3.52,Complete,54.99,thesleepjudge.com
+81,16.24,2018-04-28,#2054,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+82,12.48,2018-04-28,#2052,Apr Mattress $12.48,Complete,170.99,thesleepjudge.com
+83,56.4,2018-04-27,#2051,Apr 2018 Mattress Pad $56.40,Complete,704.97,thesleepjudge.com
+84,16.0,2018-04-27,#2050,Apr Mattress $16.00,Complete,199.99,thesleepjudge.com
+87,16.0,2018-04-26,#2045,Apr Mattress $16.00,Complete,199.99,thesleepjudge.com
+88,18.8,2018-04-26,#2044,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+86,16.92,2018-04-26,#2046,Apr Mattress $16.92,Complete,234.99,thesleepjudge.com
+85,15.7,2018-04-26,#2049,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+89,16.92,2018-04-25,#2042,Apr Mattress $16.92,Complete,234.99,thesleepjudge.com
+90,14.4,2018-04-24,#2041,Apr Mattress $14.40,Complete,199.99,thesleepjudge.com
+91,26.42,2018-04-24,#2040,Apr 2018 Mattress Cover $26.42,Complete,366.97,thesleepjudge.com
+92,13.68,2018-04-24,#2039,Apr Mattress $13.68,Complete,189.99,thesleepjudge.com
+93,14.4,2018-04-24,#2038,Apr Mattress $14.40,Complete,199.99,thesleepjudge.com
+94,0.0,2018-04-24,#2037,Apr 2018 Mattress Cover $0.00,Canceled,319.98,thesleepjudge.com
+95,15.7,2018-04-24,#2036,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+96,15.7,2018-04-24,#2035,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+100,18.8,2018-04-23,#2031,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+101,17.44,2018-04-23,#2030,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+97,74.24,2018-04-23,#2034,Apr 2018 Mattress Protector $74.24,Complete,927.95,thesleepjudge.com
+99,12.88,2018-04-23,#2032,Apr Mattress $12.88,Complete,175.99,thesleepjudge.com
+98,12.31,2018-04-23,#2033,Apr Mattress $12.31,Complete,170.99,thesleepjudge.com
+106,12.88,2018-04-22,#2024,Apr Mattress $12.88,Complete,175.99,thesleepjudge.com
+109,13.68,2018-04-22,#2021,Apr Mattress $13.68,Complete,189.99,thesleepjudge.com
+108,17.44,2018-04-22,#2022,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+107,12.67,2018-04-22,#2023,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+102,17.6,2018-04-22,#2029,Apr Mattress $17.60,Complete,234.99,thesleepjudge.com
+105,28.73,2018-04-22,#2025,"Apr 2018 Mattress Pillow Cover
+Cirrus Pillow $28.73",Complete,398.97,thesleepjudge.com
+104,14.4,2018-04-22,#2026,Apr Mattress $14.40,Complete,199.99,thesleepjudge.com
+103,28.65,2018-04-22,#2028,"Apr 2018 Mattress - Queen White
+Stratus Sheet Set - Sand $28.65",Complete,397.98,thesleepjudge.com
+110,17.44,2018-04-21,#2020,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+111,19.36,2018-04-21,#2019,Apr 2018 Mattress Cover $19.36,Complete,241.98,thesleepjudge.com
+112,10.8,2018-04-21,#2018,Apr Mattress $10.80,Complete,134.99,thesleepjudge.com
+113,18.8,2018-04-20,#2017,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+114,11.88,2018-04-20,#2014,Apr Mattress $11.88,Complete,164.99,thesleepjudge.com
+115,30.4,2018-04-20,#2013,Apr Sheet $30.40,Complete,379.98,thesleepjudge.com
+118,14.8,2018-04-19,#2010,Apr Mattress $14.80,Complete,199.99,thesleepjudge.com
+117,12.48,2018-04-19,#2011,Apr Mattress $12.48,Complete,170.99,thesleepjudge.com
+116,15.2,2018-04-19,#2012,Apr Mattress $15.20,Complete,189.99,thesleepjudge.com
+120,12.67,2018-04-18,#2008,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+121,16.24,2018-04-18,#2007,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+122,0.0,2018-04-18,#2005,Apr Mattress $0.00,Canceled,234.99,thesleepjudge.com
+119,24.62,2018-04-18,#2009,Apr Mattress $24.62,Complete,341.98,thesleepjudge.com
+123,8.36,2018-04-17,#2003,"Apr Pillow
+Cumulus $8.36",Complete,154.47,thesleepjudge.com
+124,12.31,2018-04-17,#2002,Apr Mattress $12.31,Complete,170.99,thesleepjudge.com
+125,14.08,2018-04-17,#2000,Apr Mattress $14.08,Complete,175.99,thesleepjudge.com
+129,16.24,2018-04-16,#1995,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+131,17.44,2018-04-16,#1993,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+130,13.68,2018-04-16,#1994,Apr Mattress $13.68,Complete,170.99,thesleepjudge.com
+132,13.68,2018-04-16,#1992,Apr Mattress $13.68,Complete,170.99,thesleepjudge.com
+128,12.31,2018-04-16,#1997,Apr Mattress $12.31,Complete,170.99,thesleepjudge.com
+127,13.2,2018-04-16,#1998,Apr Mattress $13.20,Complete,164.99,thesleepjudge.com
+126,13.68,2018-04-16,#1999,Apr Mattress $13.68,Complete,189.99,thesleepjudge.com
+133,31.52,2018-04-15,#1991,Apr 2018 Mattress Protector $31.52,Complete,393.98,thesleepjudge.com
+134,9.72,2018-04-15,#1990,Apr Mattress $9.72,Complete,134.99,thesleepjudge.com
+135,17.44,2018-04-15,#1989,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+136,26.78,2018-04-15,#1987,"Apr 2018 Mattress Pillow
+Pileus Cover $26.78",Complete,371.96,thesleepjudge.com
+137,18.8,2018-04-14,#1985,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+138,16.24,2018-04-14,#1983,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+139,0.0,2018-04-13,#1982,Apr Mattress $0.00,Canceled,217.99,thesleepjudge.com
+140,12.8,2018-04-13,#1981,Apr Mattress $12.80,Complete,199.99,thesleepjudge.com
+141,56.32,2018-04-13,#1979,Apr Mattress $56.32,Complete,703.96,thesleepjudge.com
+142,30.24,2018-04-13,#1977,Apr 2018 Pillow Cover $30.24,Complete,419.93,thesleepjudge.com
+143,16.92,2018-04-13,#1975,Apr Mattress $16.92,Complete,234.99,thesleepjudge.com
+144,12.88,2018-04-13,#1974,Apr Mattress $12.88,Complete,175.99,thesleepjudge.com
+145,18.96,2018-04-12,#1973,Apr 2018 Mattress Cover $18.96,Complete,236.98,thesleepjudge.com
+147,15.7,2018-04-11,#1968,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+146,19.15,2018-04-11,#1969,Apr 2018 Mattress Cover $19.15,Complete,265.98,thesleepjudge.com
+149,17.44,2018-04-10,#1966,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+150,0.0,2018-04-10,#1964,Apr Mattress $0.00,Canceled,234.99,thesleepjudge.com
+151,16.24,2018-04-10,#1963,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+152,18.8,2018-04-10,#1962,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+148,12.67,2018-04-10,#1967,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+153,17.44,2018-04-09,#1961,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+154,16.0,2018-04-08,#1959,Apr Mattress $16.00,Complete,199.99,thesleepjudge.com
+155,14.88,2018-04-08,#1957,Apr 2018 Mattress Women’s So Soft Socks $14.88,Complete,185.99,thesleepjudge.com
+156,17.6,2018-04-08,#1956,Apr Mattress $17.60,Complete,234.99,thesleepjudge.com
+157,14.08,2018-04-08,#1955,Apr Mattress $14.08,Complete,175.99,thesleepjudge.com
+158,15.7,2018-04-08,#1954,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+162,17.44,2018-04-07,#1949,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+164,15.7,2018-04-07,#1947,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+163,12.67,2018-04-07,#1948,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+161,16.92,2018-04-07,#1950,Apr Mattress $16.92,Complete,234.99,thesleepjudge.com
+160,12.88,2018-04-07,#1951,Apr Mattress $12.88,Complete,175.99,thesleepjudge.com
+159,16.0,2018-04-07,#1952,Apr Mattress $16.00,Complete,199.99,thesleepjudge.com
+165,17.6,2018-04-06,#1946,Apr Mattress $17.60,Complete,234.99,thesleepjudge.com
+166,28.72,2018-04-06,#1945,Apr 2018 Down Pad $28.72,Complete,358.98,thesleepjudge.com
+167,15.7,2018-04-04,#1940,Apr Mattress $15.70,Complete,217.99,thesleepjudge.com
+168,18.8,2018-04-04,#1939,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+169,31.92,2018-04-04,#1937,Apr 2018 Mattress Set $31.92,Complete,398.98,thesleepjudge.com
+170,16.0,2018-04-04,#1936,Apr Mattress $16.00,Complete,199.99,thesleepjudge.com
+171,32.4,2018-04-04,#1935,Apr 2018 Mattress Cover $32.40,Complete,404.97,thesleepjudge.com
+172,16.24,2018-04-03,#1934,Apr Mattress $16.24,Complete,217.99,thesleepjudge.com
+173,17.44,2018-04-03,#1933,Apr Mattress $17.44,Complete,217.99,thesleepjudge.com
+178,12.67,2018-04-02,#1926,Apr Mattress $12.67,Complete,175.99,thesleepjudge.com
+177,18.8,2018-04-02,#1927,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+176,16.92,2018-04-02,#1930,Apr Mattress $16.92,Complete,234.99,thesleepjudge.com
+175,14.08,2018-04-02,#1931,Apr Mattress $14.08,Complete,175.99,thesleepjudge.com
+174,13.68,2018-04-02,#1932,Apr Mattress $13.68,Complete,189.99,thesleepjudge.com
+179,18.8,2018-04-01,#1925,Apr Mattress $18.80,Complete,234.99,thesleepjudge.com
+180,0.0,2018-04-01,#1923,Apr Mattress $0.00,Canceled,134.99,thesleepjudge.com
+181,12.88,2018-03-31,#1922,Mar Mattress $12.88,Complete,175.99,thesleepjudge.com
+182,0.0,2018-03-31,#1920,Mar Mattress $0.00,Canceled,217.99,thesleepjudge.com
+183,17.44,2018-03-31,#1919,Mar Mattress $17.44,Complete,217.99,thesleepjudge.com
+184,18.86,2018-03-30,#1918,Mar 2018 Pillow Protector $18.86,Complete,261.98,thesleepjudge.com
+185,18.8,2018-03-30,#1917,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+186,0.0,2018-03-29,#1916,Mar Mattress $0.00,Canceled,234.99,thesleepjudge.com
+187,17.8,2018-03-29,#1915,"Mar 2018 Mattress Pillow
+Pileus Cover $17.80",Complete,237.47,thesleepjudge.com
+188,12.67,2018-03-28,#1914,Mar Mattress $12.67,Complete,175.99,thesleepjudge.com
+189,14.4,2018-03-28,#1913,Mar Mattress $14.40,Complete,199.99,thesleepjudge.com
+191,12.67,2018-03-27,#1909,Mar Mattress $12.67,Complete,175.99,thesleepjudge.com
+190,12.88,2018-03-27,#1910,Mar Mattress $12.88,Complete,175.99,thesleepjudge.com
+192,25.49,2018-03-26,#1906,"Mar 2018 Mattress - King White
+Nacreous Pillow Covers - Standard White (2-pack)
+Cumulus Pillow - Firm $25.49",Complete,353.97,thesleepjudge.com
+193,16.0,2018-03-25,#1903,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+194,15.7,2018-03-25,#1902,Mar Mattress $15.70,Complete,217.99,thesleepjudge.com
+195,16.92,2018-03-25,#1901,Mar Mattress $16.92,Complete,234.99,thesleepjudge.com
+196,15.2,2018-03-24,#1900,Mar Mattress $15.20,Complete,189.99,thesleepjudge.com
+197,25.7,2018-03-24,#1899,Mar 2018 Mattress Set $25.70,Complete,356.98,thesleepjudge.com
+198,16.0,2018-03-24,#1898,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+199,16.0,2018-03-24,#1897,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+200,14.4,2018-03-23,#1896,Mar Mattress $14.40,Complete,199.99,thesleepjudge.com
+201,18.8,2018-03-23,#1895,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+202,22.4,2018-03-23,#1894,Mar Mattress $22.40,Complete,279.98,thesleepjudge.com
+203,12.31,2018-03-23,#1893,Mar Mattress $12.31,Complete,170.99,thesleepjudge.com
+205,17.6,2018-03-22,#1891,Mar Mattress $17.60,Complete,234.99,thesleepjudge.com
+204,16.0,2018-03-22,#1892,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+206,14.08,2018-03-21,#1890,Mar Mattress $14.08,Complete,175.99,thesleepjudge.com
+207,15.7,2018-03-21,#1889,Mar Mattress $15.70,Complete,217.99,thesleepjudge.com
+208,16.92,2018-03-21,#1888,Mar Mattress $16.92,Complete,234.99,thesleepjudge.com
+209,16.8,2018-03-20,#1886,Mar 2018 Mattress Women’s So Soft Socks $16.80,Complete,209.99,thesleepjudge.com
+210,17.6,2018-03-20,#1885,Mar Mattress $17.60,Complete,234.99,thesleepjudge.com
+211,0.0,2018-03-20,#1884,Mar Mattress $0.00,Canceled,217.99,thesleepjudge.com
+212,13.2,2018-03-20,#1882,Mar Mattress $13.20,Complete,164.99,thesleepjudge.com
+213,14.08,2018-03-19,#1881,Mar Mattress $14.08,Complete,175.99,thesleepjudge.com
+214,16.0,2018-03-19,#1878,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+215,28.16,2018-03-19,#1877,Mar Mattress $28.16,Complete,351.98,thesleepjudge.com
+216,16.0,2018-03-19,#1876,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+220,14.08,2018-03-18,#1872,Mar Mattress $14.08,Complete,175.99,thesleepjudge.com
+219,18.8,2018-03-18,#1873,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+218,16.0,2018-03-18,#1874,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+217,16.0,2018-03-18,#1875,Mar Mattress $16.00,Complete,199.99,thesleepjudge.com
+221,18.8,2018-03-17,#1871,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+222,18.8,2018-03-17,#1870,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+223,0.0,2018-03-17,#1869,Mar Mattress $0.00,Canceled,217.99,thesleepjudge.com
+224,30.08,2018-03-15,#1868,Mar 2018 Mattress Protector $30.08,Complete,375.98,thesleepjudge.com
+225,15.7,2018-03-15,#1867,Mar Mattress $15.70,Complete,217.99,thesleepjudge.com
+226,14.0,2018-03-15,#1866,Mar Mattress $14.00,Complete,189.99,thesleepjudge.com
+227,15.7,2018-03-15,#1865,Mar Mattress $15.70,Complete,217.99,thesleepjudge.com
+228,17.44,2018-03-15,#1864,Mar Mattress $17.44,Complete,217.99,thesleepjudge.com
+229,12.88,2018-03-14,#1862,Mar Mattress $12.88,Complete,175.99,thesleepjudge.com
+230,14.4,2018-03-14,#1861,Mar Mattress $14.40,Complete,199.99,thesleepjudge.com
+231,18.8,2018-03-14,#1860,Mar Mattress $18.80,Complete,234.99,thesleepjudge.com
+232,14.8,2018-03-13,#1859,Mar Mattress $14.80,Complete,199.99,thesleepjudge.com
+233,28.01,2018-03-13,#1858,"Mar 2018 Mattress - King
+Stratus Sheet Set - White $28.01",Complete,388.98,thesleepjudge.com
