@@ -1,0 +1,24 @@
+[INFO  - 2018-09-20T09:30:35.714Z] GhostDriver - Main - running on port 53729
+[INFO  - 2018-09-20T09:30:35.878Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0","webSecurityEnabled":true}
+[INFO  - 2018-09-20T09:30:35.879Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.customHeaders:  - {}
+[INFO  - 2018-09-20T09:30:35.879Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.javascriptEnabled":true,"phantomjs.page.settings.loadImages":true,"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0"}
+[INFO  - 2018-09-20T09:30:35.879Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: d420b330-bcb7-11e8-8f97-0bf8e2f46b5e
+[ERROR - 2018-09-20T09:30:40.503Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.onError - msg: TypeError: undefined is not a constructor (evaluating 'grecaptcha.render')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-09-20T09:30:40.503Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.onError - stack:
+  initCaptcha (undefined:6)
+  (anonymous function) (:7)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-09-20T09:30:40.504Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.onError - msg: TypeError: undefined is not a constructor (evaluating 'grecaptcha.render')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-09-20T09:30:40.504Z] Session [d420b330-bcb7-11e8-8f97-0bf8e2f46b5e] - page.onError - stack:
+  initCaptcha (undefined:6)
+  (anonymous function) (:7)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-09-20T09:31:15.782Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1537435875747
+
+  phantomjs://platform/console++.js:263 in error

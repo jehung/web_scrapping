@@ -34,9 +34,6 @@ def lookup_commissions(driver, sd, ed):
     password.send_keys("Vscope700!")
     driver.find_element_by_xpath("//button[@name='login']").click()
 
-    # Go to conversions
-    driver.find_element_by_link_text("Orders").click()
-
     # date picker
     datepicker_from = driver.find_element_by_xpath("//input[@name='date_from']")
     driver.execute_script("arguments[0].value='"+sd+"';", datepicker_from)
@@ -47,13 +44,12 @@ def lookup_commissions(driver, sd, ed):
     driver.execute_script("arguments[0].value='"+ed+"';", datepicker_to)
     print('now', datepicker_to.get_attribute('value'))
 
-    # submit
-    driver.find_element_by_xpath("//button[@class='btn btn-success show_orders']").click()
+    # Go to conversions
+    #driver.find_element_by_link_text("Show").click()
+    driver.find_element_by_xpath("//button[@class='btn btn-success show_summary_data']").click()
 
     # now get conversion data
-    post_dict = {'price':[], 'earnings': [], 'order_status': [], 'referring_page': [],
-                 'landing_page':[], 'tracking_method':[], 'date':[]}
-
+    post_dict = {'date':[], 'visitors': [], 'order': [], 'earnings': [], 'conversions':[]}
 
     rows = driver.find_element_by_xpath('//div[@class="table_responsive_holder"]').find_elements_by_tag_name('tr')
     cols = driver.find_element_by_xpath('//div[@class="table_responsive_holder"]').find_elements_by_tag_name('td')
@@ -62,13 +58,11 @@ def lookup_commissions(driver, sd, ed):
     for i in range(1,len(rows)):
     #for col in cols:
         print('here', rows[i].find_elements_by_tag_name('td')[0].text)
-        post_dict['price'].append(rows[i].find_elements_by_tag_name('td')[0].text)
-        post_dict['earnings'].append(rows[i].find_elements_by_tag_name('td')[1].text)
-        post_dict['order_status'].append(rows[i].find_elements_by_tag_name('td')[2].text)
-        post_dict['referring_page'].append(rows[i].find_elements_by_tag_name('td')[3].text)
-        post_dict['landing_page'].append(rows[i].find_elements_by_tag_name('td')[4].text)
-        post_dict['tracking_method'].append(rows[i].find_elements_by_tag_name('td')[5].text)
-        post_dict['date'].append(rows[i].find_elements_by_tag_name('td')[6].text)
+        post_dict['date'].append(rows[i].find_elements_by_tag_name('td')[0].text)
+        post_dict['visitors'].append(rows[i].find_elements_by_tag_name('td')[1].text)
+        post_dict['order'].append(rows[i].find_elements_by_tag_name('td')[2].text)
+        post_dict['earnings'].append(rows[i].find_elements_by_tag_name('td')[3].text)
+        post_dict['conversions'].append(rows[i].find_elements_by_tag_name('td')[4].text)
 
     print(post_dict)
 
@@ -77,20 +71,10 @@ def lookup_commissions(driver, sd, ed):
 
 
 def process_df(post_dict):
-    if 'commission' in post_dict:
-        post_dict['date'] = (post_dict.date.apply(lambda x:pd.to_datetime(x)))
-
-        post_dict['total_amount'] = (post_dict.total_amount.str.replace('$', ''))
-        post_dict['commission'] = (post_dict.commission.str.replace('$', ''))
-
-        post_dict['total_amount'] = (post_dict.total_amount.str.replace(',', ''))
-        post_dict['commission'] = (post_dict.commission.str.replace(',', ''))
-
-        post_dict['total_amount'] = post_dict['total_amount'].astype(float)
-        post_dict['commission'] = post_dict['commission'].astype(float)
-
-        post_dict['number'] = (post_dict.number.str.replace('#', ''))
-
+    post_dict['date'] = (post_dict.date.apply(lambda x:pd.to_datetime(x)))
+    post_dict['earnings'] = (post_dict.commission.str.replace('$', ''))
+    post_dict['earnings'] = post_dict['commission'].astype(float)
+    post_dict['visitors'] = post_dict['visitors'].astype(float)
 
     return post_dict
 
